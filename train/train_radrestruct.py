@@ -34,7 +34,7 @@ if __name__ == '__main__':
     parser.add_argument('--aug_history', action='store_true', default=False, help="do history augmentation")
 
     parser.add_argument('--seed', type=int, required=False, default=42, help="set seed for reproducibility")
-    parser.add_argument('--num_workers', type=int, required=False, default=4, help="number of workers")
+    parser.add_argument('--num_workers', type=int, required=False, default=12, help="number of workers")
     parser.add_argument('--epochs', type=int, required=False, default=100, help="num epochs to train")
     parser.add_argument('--classifier_dropout', type=float, required=False, default=0.0, help="how often should image be dropped")
 
@@ -45,14 +45,13 @@ if __name__ == '__main__':
 
     parser.add_argument('--hidden_dropout_prob', type=float, required=False, default=0.3, help="hidden dropout probability")
 
-    parser.add_argument('--img_feat_size', type=int, required=True, default=3, help="dimension of last pooling layer of img encoder")
+    parser.add_argument('--img_feat_size', type=int, required=True, default=14, help="dimension of last pooling layer of img encoder")
     parser.add_argument('--num_question_tokens', type=int, required=False, default=20, help="number of tokens for question")
     parser.add_argument('--hidden_size', type=int, required=False, default=768, help="hidden size")
-    parser.add_argument('--hidden_size_img_enc', type=int, required=False, default=2048, help="hidden size img encoder (for BAN)")
     parser.add_argument('--vocab_size', type=int, required=False, default=30522, help="vocab size")
     parser.add_argument('--type_vocab_size', type=int, required=False, default=2, help="type vocab size")
-    parser.add_argument('--heads', type=int, required=False, default=12, help="heads")
-    parser.add_argument('--n_layers', type=int, required=False, default=4, help="num of fusion layers")
+    parser.add_argument('--heads', type=int, required=False, default=16, help="heads")
+    parser.add_argument('--n_layers', type=int, required=False, default=1, help="num of fusion layers")
     parser.add_argument('--acc_grad_batches', type=int, required=False, default=None, help="how many batches to accumulate gradients")
 
     args = parser.parse_args()
