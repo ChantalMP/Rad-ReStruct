@@ -1,0 +1,4 @@
+NO = [0,1]
+YES = [1,0]
+NOT_PREDICTED = -2
+UNDEFINED = [-1,-1]
