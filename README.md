@@ -47,13 +47,14 @@ report for every image.
    - unpack and copy image files into 'data/radrestruct/images'
   
    VQARad:
-   - download images as zip from 'https://osf.io/89kps/'
+   - download images as zip from https://osf.io/89kps/
    - unpack and copy image files into 'data/vqarad/images'
 
 ### Use the Rad-ReStruct dataset:
 
 #### Training with VQA Dataset:
-- The dataset is available in the folder 'data/radrestruct'
+- The dataset is available in the folder 'data/radrestruct'. The structured reports are in 'new_reports', the QA pairs are in '<split>_qa_pairs'. <split>_vectorized_answers 
+contains on 2470-dim vector for every report in the dataset, where each dimension corresponds to one answer (see Report-based Evaluation).
 - To load the dataset use the following code. This will load the dataset as VQA dataset, where one sample is an image together with a single question + history.
   
 ```
