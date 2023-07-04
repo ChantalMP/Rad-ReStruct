@@ -34,7 +34,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -70,7 +70,7 @@
       "catheters, indwelling": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "abdomen",
               "thoracic vertebrae",
@@ -79,7 +79,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -156,7 +156,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -191,7 +191,7 @@
       "tube, inserted": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "abdomen",
               "thorax",
@@ -201,7 +201,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -271,7 +271,7 @@
                 ]
               },
               "attributes": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "diffuse",
                   "focal",
@@ -402,7 +402,7 @@
                 ]
               },
               "degree": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "chronic",
                   "mild",
@@ -571,7 +571,7 @@
           "diaphragm": {
             "infos": {
               "localization": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "bilateral",
                   "left",
@@ -580,7 +580,7 @@
                 ]
               },
               "attributes": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "elevated",
                   "flattened",
@@ -1204,7 +1204,7 @@
                 ]
               },
               "degree": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "chronic",
                   "mild",
@@ -1680,7 +1680,7 @@
                 ]
               },
               "degree": {
-                "answer_type": "multi_choice",
+                "answer_type": "single_choice",
                 "options": [
                   "borderline",
                   "mild",
@@ -2258,7 +2258,7 @@
       "deformity": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "clavicle",
               "humerus",
@@ -2306,7 +2306,7 @@
       "density": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "clavicle",
               "ribs",
@@ -2414,7 +2414,7 @@
       "spinal fusion": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "cervical vertebrae",
               "lumbar vertebrae",
@@ -2607,7 +2607,7 @@
       "arthritis": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "cervical vertebrae",
               "humerus",
@@ -2633,7 +2633,7 @@
             ]
           },
           "degree": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "mild",
               "no selection",
@@ -2672,7 +2672,7 @@
       "dislocations": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "lumbar vertebrae",
               "shoulder",
@@ -2715,7 +2715,7 @@
       "fractures, bone": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "clavicle",
               "humerus",
@@ -2781,7 +2781,7 @@
       "kyphosis": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "lumbar vertebrae",
               "thoracic vertebrae",
@@ -2802,7 +2802,7 @@
       "osteophyte": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "cervical vertebrae",
               "lumbar vertebrae",
@@ -2847,7 +2847,7 @@
       "scoliosis": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "lumbar vertebrae",
               "thoracic vertebrae",
@@ -2855,7 +2855,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -2863,7 +2863,7 @@
             ]
           },
           "degree": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "mild",
               "moderate",
@@ -2876,7 +2876,7 @@
       "sclerosis": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "humerus",
               "lumbar vertebrae",
@@ -3176,7 +3176,7 @@
       "density": {
         "infos": {
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "left",
               "right",
@@ -3493,7 +3493,7 @@
     "area": "lymph nodes",
     "infos": {
       "body_region": {
-        "answer_type": "multi_choice",
+        "answer_type": "single_choice",
         "options": [
           "hilum",
           "mediastinum",
@@ -3503,7 +3503,7 @@
         ]
       },
       "localization": {
-        "answer_type": "multi_choice",
+        "answer_type": "single_choice",
         "options": [
           "bilateral",
           "left",
@@ -3530,7 +3530,7 @@
       "calcinosis": {
         "infos": {
           "body_region": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "aorta",
               "hilum",
@@ -3543,7 +3543,7 @@
             ]
           },
           "localization": {
-            "answer_type": "multi_choice",
+            "answer_type": "single_choice",
             "options": [
               "bilateral",
               "left",
