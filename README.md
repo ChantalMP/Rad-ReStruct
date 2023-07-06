@@ -123,7 +123,7 @@ To use our pretrained weights set WEIGHT_PATH to "TODO"
 
 #### VQARad:
 ```
-training: python -m train_vqarad --run_name "train_vqarad" --acc_grad_batches 2 --lr 1e-5 --epochs 200 --batch_size 32 --classifier_dropout 0.2 --progressive --mixed_precision 
+training: python -m train_vqarad --run_name "train_vqarad" --acc_grad_batches 2 --lr 5e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision
 evaluation: python -m evaluation.evaluate_autoregressive_vqarad --run_name "eval_vqarad" --batch_size 1 --use_pretrained --model_dir "<WEIGHT_PATH>" --progressive --mixed_precision 
 ```
 To use our pretrained weights set WEIGHT_PATH to "TODO"
