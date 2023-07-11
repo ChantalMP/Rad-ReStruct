@@ -43,8 +43,8 @@ Please use these updated results when comparing to our method.
    ```
 2. Install requirements:
    ```
-   conda create -n xplainer_env python=3.9
-   conda activate xplainer_env
+   conda create -n radrestruct_env python=3.9
+   conda activate radrestruct_env
    pip install -r requirements.txt
    ```
    
