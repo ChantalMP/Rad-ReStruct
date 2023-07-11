@@ -31,9 +31,9 @@ report for every image.
 Since the publication of our paper, we have updated our dataset to fix some inconsistencies in the structured reports. The updated evaluation results on Rad-ReStruct are shown below. 
 Please use these updated results when comparing to our method.
 
-<img src="figures/main_results.png" alt="pipeline" width="100%"/>
+<img src="figures/main_results.png" alt="pipeline" width="45%"/>
 
-<img src="figures/detailed_results.png" alt="pipeline" width="100%"/>
+<img src="figures/detailed_results.png" alt="pipeline" width="72%"/>
 
 
 ### Setup:
