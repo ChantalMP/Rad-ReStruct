@@ -13,7 +13,7 @@ from torchvision import transforms
 from data_utils.data_radrestruct import RadReStructEval, get_targets_for_split
 from evaluation.evaluator_radrestruct import AutoregressiveEvaluator
 from net.model import ModelWrapper
-from predict_autoregressive_VQA_radrestruct import predict_autoregressive_VQA
+from evaluation.predict_autoregressive_VQA_radrestruct import predict_autoregressive_VQA
 
 warnings.simplefilter("ignore", UserWarning)
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--hidden_dropout_prob', type=float, required=False, default=0.3, help="hidden dropout probability")
 
-    parser.add_argument('--img_feat_size', type=int, required=True, default=14, help="dimension of last pooling layer of img encoder")
+    parser.add_argument('--img_feat_size', type=int, required=False, default=14, help="dimension of last pooling layer of img encoder")
     parser.add_argument('--num_question_tokens', type=int, required=False, default=20, help="number of tokens for question")
     parser.add_argument('--hidden_size', type=int, required=False, default=768, help="hidden size")
     parser.add_argument('--vocab_size', type=int, required=False, default=30522, help="vocab size")
@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     test_tfm = transforms.Compose([img_tfm, norm_tfm]) if norm_tfm is not None else img_tfm
 
-    valdataset = RadReStructEval(tfm=test_tfm, mode='test', args=args, limit_data=2)
+    valdataset = RadReStructEval(tfm=test_tfm, mode='test', args=args)
 
 
     # handle info dicts in collate_fn
@@ -116,11 +116,12 @@ if __name__ == '__main__':
     logger = pl.loggers.TensorBoardLogger('runs_radrestruct', name=args.run_name, version=0)
 
     preds = predict_autoregressive_VQA(model, valloader, args)
+
     evaluator = AutoregressiveEvaluator()
 
     targets = get_targets_for_split('test')
 
-    acc, acc_report, f1, precision, recall, detailed_metrics = evaluator.evaluate(preds, targets)
+    acc, acc_report, f1, precision, recall, detailed_metrics = evaluator.evaluate(preds, targets[:len(preds)])
     print(f"Acc: {acc}, Report_acc: {acc_report}, F1: {f1}, Prec: {precision}, Rec: {recall}")
     print(detailed_metrics)
     print("Done")

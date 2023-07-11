@@ -44,7 +44,7 @@ if __name__ == '__main__':
     parser.add_argument('--hidden_dropout_prob', type=float, required=False, default=0.3, help="hidden dropout probability")
     parser.add_argument('--smoothing', type=float, required=False, default=None, help="label smoothing")
 
-    parser.add_argument('--img_feat_size', type=int, required=True, default=14, help="dimension of last pooling layer of img encoder")
+    parser.add_argument('--img_feat_size', type=int, required=False, default=14, help="dimension of last pooling layer of img encoder")
     parser.add_argument('--num_question_tokens', type=int, required=False, default=20, help="number of tokens for question")
     parser.add_argument('--hidden_size', type=int, required=False, default=768, help="hidden size")
     parser.add_argument('--vocab_size', type=int, required=False, default=30522, help="vocab size")

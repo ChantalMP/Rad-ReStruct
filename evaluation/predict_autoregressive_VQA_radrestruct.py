@@ -11,7 +11,7 @@ from transformers import AutoTokenizer
 
 from data_utils.data_radrestruct import encode_text_progressive
 from data_utils.preprocessing_radrestruct import get_topic_question, get_question
-from defs import *
+from evaluation.defs import *
 
 warnings.simplefilter("ignore", UserWarning)
 
@@ -82,7 +82,7 @@ def iterate_instances_VQA(model, img, elem, question, elem_name, topic_name, are
                 out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                               token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                               token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                 q_positive_pred = torch.argmax(out[0, [58, 95]]) == 1
 
@@ -138,7 +138,7 @@ def iterate_instances_VQA(model, img, elem, question, elem_name, topic_name, are
                         out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                        q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                        attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                                       token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                                       token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                         language_answers, pred = get_value(out, infos[key], answer_options)
                         if match_instances:
@@ -158,7 +158,7 @@ def iterate_instances_VQA(model, img, elem, question, elem_name, topic_name, are
                         out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                        q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                        attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                                       token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                                       token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                         language_answers, pred = get_value(out, infos[key], answer_options)
                         if match_instances:
@@ -178,7 +178,7 @@ def iterate_instances_VQA(model, img, elem, question, elem_name, topic_name, are
                         out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                        q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                        attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                                       token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                                       token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                         language_answers, pred = get_value(out, infos[key], answer_options)
                         if match_instances:
@@ -199,7 +199,7 @@ def iterate_instances_VQA(model, img, elem, question, elem_name, topic_name, are
                         out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                        q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                        attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                                       token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                                       token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                         language_answers, pred = get_value(out, infos[key], answer_options)
                         if match_instances:
@@ -332,7 +332,7 @@ def iterate_area_VQA(img, area, area_name, model, tokenizer, args, max_instances
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                        q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                       attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0), token_type_ids=token_type_ids.unsqueeze(0),
+                       attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0), token_type_ids_q=token_type_ids.unsqueeze(0),
                        mode='val')
 
         area_positive_pred = torch.argmax(out[0, [58, 95]]) == 1  # yes was predicted
@@ -372,7 +372,7 @@ def iterate_area_VQA(img, area, area_name, model, tokenizer, args, max_instances
                     out, _ = model(img=img.to(device), input_ids=torch.tensor(tokens, dtype=torch.long, device=device).unsqueeze(0),
                                    q_attn_mask=torch.tensor(q_attn_mask, dtype=torch.long, device=device).unsqueeze(0),
                                    attn_mask=torch.tensor(attn_mask, dtype=torch.long, device=device).unsqueeze(0),
-                                   token_type_ids=token_type_ids.unsqueeze(0), mode='val')
+                                   token_type_ids_q=token_type_ids.unsqueeze(0), mode='val')
 
                     elem_positive_pred = torch.argmax(out[0, [58, 95]]) == 1
 

@@ -7,6 +7,7 @@ from copy import deepcopy
 ''' utilities for generating vqa-pairs from the Rad-ReStruct reports '''
 
 def get_object_question(object_name, first_instance):
+
     if first_instance:
         if object_name == "contrast media":
             question = f"Is there {object_name}?"
@@ -31,7 +32,6 @@ def get_object_question(object_name, first_instance):
             question = f"Are there more {object_name}?"
 
     return question
-
 
 def get_question(elem_name, topic_name, area_name, first_instance):
     if topic_name == "objects":
@@ -80,7 +80,7 @@ def get_topic_question(topic_name, area_name):
     elif topic_name in ["signs", "diseases", "other diseases"]:
         question = f"Are there any {topic_name} in the {area_name}?"
 
-    elif topic_name in ["body_regions", "infos"]:  # for larger areas they are splitted in body regions, for smaller areas they go directly to infos
+    elif topic_name in ["body_regions", "infos"]: #for larger areas they are splitted in body regions, for smaller areas they go directly to infos
         question = f"Is there anything abnormal in the {area_name}?"
 
     else:
@@ -130,10 +130,16 @@ def iterate_instances(elem, question, qa_pairs, elem_name, topic_name, area_name
                 print(f"WARNING: {key} is empty for {elem_name} in {area_name}")
 
     # if less instances than max_instances -> add negative answered question
-    if f"{area_name}/{topic_name}" in max_instances: # for this finding multiple instances are allowed
-        max_num_occurences = max_instances[f"{area_name}/{topic_name if topic_name == 'infos' else elem_name}"]
+    if topic_name == "infos":
+        if f"{area_name}/{topic_name}" in max_instances:
+            max_num_occurences = max_instances[f"{area_name}/{topic_name}"]
+        else:
+            max_num_occurences = 1
     else:
-        max_num_occurences = 1
+        if f"{area_name}/{elem_name}" in max_instances:
+            max_num_occurences = max_instances[f"{area_name}/{elem_name}"]
+        else:
+            max_num_occurences = 1
 
     if len(elem["instances"]) < max_num_occurences: #only add one negative instance as then execution will stop
         question = get_question(elem_name, topic_name, area_name, first_instance=False)
@@ -307,8 +313,7 @@ def iterate_area_vectorized(area, area_name, answer_vector, max_instances, quest
                         for info_name, info in elem['infos'].items():
                             choice_options[question_id] = info['answer_type']
                             for option in info['options']:
-                                answer_vector[f"{area_name}_{topic_name}_{elem_name}_{info_name}_{option}_{i}"] = option in elem['instances'][i][
-                                    info_name]
+                                answer_vector[f"{area_name}_{topic_name}_{elem_name}_{info_name}_{option}_{i}"] = option in elem['instances'][i][info_name]
                                 question_ids.append(question_id)
                             question_id += 1
 

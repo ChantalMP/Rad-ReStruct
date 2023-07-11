@@ -14,6 +14,8 @@ class ImageEncoderEfficientNet(nn.Module):
         self.model = timm.create_model('tf_efficientnet_b5', pretrained=True)
         config = resolve_data_config({}, model=self.model)
         self.transforms = create_transform(**config)
+        if 'radrestruct' in args.data_dir:
+            self.transforms.transforms[0] = transforms.Resize((488, 488))
 
         self.model = nn.Sequential(*list(self.model.children())[:-2])
 

@@ -12,7 +12,7 @@ class QuestionEncoderBERT(nn.Module):
 
     def forward(self, input_ids, q_attn_mask):
         # feed question to BERT model
-        outputs = self.BERTmodel(input_ids[:, :400], attention_mask=q_attn_mask[:, :400])
+        outputs = self.BERTmodel(input_ids, attention_mask=q_attn_mask)
         # get word embeddings
         word_embeddings = outputs.last_hidden_state
 

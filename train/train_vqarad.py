@@ -44,7 +44,7 @@ if __name__ == '__main__':
     parser.add_argument('--hidden_dropout_prob', type=float, required=False, default=0.3, help="hidden dropout probability")
     parser.add_argument('--smoothing', type=float, required=False, default=None, help="label smoothing")
 
-    parser.add_argument('--img_feat_size', type=int, required=True, default=14, help="dimension of last pooling layer of img encoder")
+    parser.add_argument('--img_feat_size', type=int, required=False, default=14, help="dimension of last pooling layer of img encoder")
     parser.add_argument('--num_question_tokens', type=int, required=False, default=259, help="number of tokens for question")
     parser.add_argument('--hidden_size', type=int, required=False, default=768, help="hidden size")
     parser.add_argument('--vocab_size', type=int, required=False, default=30522, help="vocab size")
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     # use torchinfo to see model architecture and trainable parameters
     from torchinfo import summary
 
-    summary(model, device='gpu')
+    summary(model)
 
     if args.use_pretrained:
         missing_keys, unexpected_keys = model.load_state_dict(torch.load(args.model_dir, map_location=torch.device('cpu'))['state_dict'])
@@ -116,12 +116,9 @@ if __name__ == '__main__':
 
     logger = pl.loggers.TensorBoardLogger('runs', name=args.run_name, version=0)
 
-    if args.output == 'class':
-        checkpoint_callback = ModelCheckpoint(monitor='Acc/val_clean', dirpath=os.path.join(args.save_dir, args.run_name), filename='{epoch}-{Acc/val_clean:.2f}',
+    checkpoint_callback = ModelCheckpoint(monitor='Acc/val_clean', dirpath=os.path.join(args.save_dir, args.run_name), filename='{epoch}-{Acc/val_clean:.2f}',
                                               mode='max', every_n_epochs=1, save_last=True)
-    else:
-        checkpoint_callback = ModelCheckpoint(monitor='Acc/val', dirpath=args.save_dir, filename=args.run_name + '/{epoch}-{Acc/val:.2f}', mode='max',
-                                              every_n_epochs=1, save_last=True)
+
     trainer = Trainer(
         accelerator="gpu" if torch.cuda.is_available() else None,
         devices=1 if torch.cuda.is_available() else None,

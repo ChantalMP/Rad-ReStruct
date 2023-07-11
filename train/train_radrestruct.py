@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--hidden_dropout_prob', type=float, required=False, default=0.3, help="hidden dropout probability")
 
-    parser.add_argument('--img_feat_size', type=int, required=True, default=14, help="dimension of last pooling layer of img encoder")
+    parser.add_argument('--img_feat_size', type=int, required=False, default=14, help="dimension of last pooling layer of img encoder")
     parser.add_argument('--num_question_tokens', type=int, required=False, default=20, help="number of tokens for question")
     parser.add_argument('--hidden_size', type=int, required=False, default=768, help="hidden size")
     parser.add_argument('--vocab_size', type=int, required=False, default=30522, help="vocab size")
@@ -136,3 +136,4 @@ if __name__ == '__main__':
         trainer.fit(model, train_dataloaders=trainloader, val_dataloaders=valloader, ckpt_path=args.model_dir)
     else:
         trainer.fit(model, train_dataloaders=trainloader, val_dataloaders=valloader)
+

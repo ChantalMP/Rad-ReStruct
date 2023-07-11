@@ -290,14 +290,12 @@ class VQARad(Dataset):
             history, _ = get_encoded_history(self.tokenizer, self.img_to_q_dict[image_name], question, self.df[idx]['qid'],
                                              self.df[idx]['question_type'], 259, mode='predict')
 
-            return img, torch.tensor(tokens, dtype=torch.long), torch.tensor(q_attn_mask, dtype=torch.long), torch.tensor(attn_mask,
-                                                                                                                          dtype=torch.long), torch.tensor(
-                answer, dtype=torch.long), torch.tensor(answer_type, dtype=torch.long), \
-                   token_type_ids, question, self.df[idx]['answer_text'], self.df[idx]['image_name'], self.tokenizer.decode(history), self.df[idx][
-                       'qid'], torch.tensor(0)
+            return img, torch.tensor(tokens, dtype=torch.long), torch.tensor(q_attn_mask, dtype=torch.long), torch.tensor(attn_mask,dtype=torch.long),\
+                   torch.tensor(answer, dtype=torch.long), torch.tensor(answer_type, dtype=torch.long), token_type_ids, question, self.df[idx]['answer_text'], self.df[idx]['image_name'], \
+                   self.tokenizer.decode(history), self.df[idx]['qid']
         else:
             return img, torch.tensor(tokens, dtype=torch.long), torch.tensor(q_attn_mask, dtype=torch.long), torch.tensor(attn_mask, dtype=torch.long), \
-                   torch.tensor(answer, dtype=torch.long), torch.tensor(answer_type, dtype=torch.long), token_type_ids, torch.tensor(0)
+                   torch.tensor(answer, dtype=torch.long), torch.tensor(answer_type, dtype=torch.long), token_type_ids
 
 
 class VQARadEval(Dataset):

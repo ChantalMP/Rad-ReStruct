@@ -27,6 +27,14 @@ report for every image.
 
 [1] Demner-Fushman, D., Antani, S., Simpson, M., & Thoma, G. R. (2012). Design and development of a multimodal biomedical information retrieval system. Journal of Computing Science and Engineering, 6(2), 168-177.
 
+#### Updated Results:
+Since the publication of our paper, we have updated our dataset to fix some inconsistencies in the structured reports. The updated evaluation results on Rad-ReStruct are shown below. 
+Please use these updated results when comparing to our method.
+
+<img src="figures/main_results.png" alt="pipeline" width="100%"/>
+
+<img src="figures/detailed_results.png" alt="pipeline" width="100%"/>
+
 
 ### Setup:
 1. Clone this repository
@@ -116,14 +124,14 @@ You can use this as reference, but will need to adapt it for your approach.
 ### Reproduce our results:
 #### Rad-ReStruct:
 ```
-training: python -m train_radrestruct --run_name "train_radrestruct" --classifier_dropout 0.2 --acc_grad_batches 2 --lr 1e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision 
+training: python -m train.train_radrestruct --run_name "train_radrestruct" --classifier_dropout 0.2 --acc_grad_batches 2 --lr 1e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision 
 evaluation: python -m evaluation.evaluate_radrestruct --run_name "eval_radrestruct" --match_instances --batch_size 1 --use_pretrained --model_dir "<WEIGHT_PATH>" --progressive --mixed_precision 
 ```
 To use our pretrained weights set WEIGHT_PATH to "TODO"
 
 #### VQARad:
 ```
-training: python -m train_vqarad --run_name "train_vqarad" --acc_grad_batches 2 --lr 1e-5 --epochs 200 --batch_size 32 --classifier_dropout 0.2 --progressive --mixed_precision 
+training: python -m train.train_vqarad --run_name "train_vqarad" --acc_grad_batches 2 --lr 5e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision 
 evaluation: python -m evaluation.evaluate_autoregressive_vqarad --run_name "eval_vqarad" --batch_size 1 --use_pretrained --model_dir "<WEIGHT_PATH>" --progressive --mixed_precision 
 ```
 To use our pretrained weights set WEIGHT_PATH to "TODO"

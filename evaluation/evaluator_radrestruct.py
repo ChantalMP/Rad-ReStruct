@@ -3,7 +3,7 @@ import json
 import numpy as np
 from sklearn.metrics import accuracy_score, classification_report
 
-from defs import *
+from evaluation.defs import *
 
 
 class AutoregressiveEvaluator:

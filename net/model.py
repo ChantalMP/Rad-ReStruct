@@ -225,6 +225,9 @@ class ModelWrapper(pl.LightningModule):
 
             self.loss_fn = BCEWithLogitsLoss(pos_weight=self.pos_weight, reduction="none")
 
+        else:
+            self.loss_fn = nn.CrossEntropyLoss()
+
         self.train_preds = []
         self.val_preds = []
         self.val_infos = []
@@ -285,7 +288,7 @@ class ModelWrapper(pl.LightningModule):
         else:
             self.train_infos.append(info)
 
-        loss = self.loss_fn(logits, target.squeeze(0))
+        loss = self.loss_fn(logits, target)
         loss = self.get_masked_loss(loss, mask, target, None)  # only use loss of occuring classes
 
         self.log('Loss/train', loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
@@ -324,26 +327,11 @@ class ModelWrapper(pl.LightningModule):
         else:
             loss = self.loss_fn(logits, target.squeeze(0))
             # only use loss of occuring classes
-            loss = self.get_masked_loss(loss, mask, target, None)
+            if "radrestruct" in self.args.data_dir:
+                loss = self.get_masked_loss(loss, mask, target, None)
         self.log('Loss/val', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
 
         return loss
-
-    # def predict_step(self, batch, batch_idx):  # TODO not ready for radrestruct # TODO when used
-    #     img, question_token, q_attention_mask, attn_mask, target, answer_type, token_type_ids_q, question, answer, image_name, history, q_id = batch
-    #     # img, question_token, q_attention_mask, attn_mask, target, answer_type, token_type_ids_q, labels = batch
-    #     question_token = question_token.squeeze(1)
-    #     attn_mask = attn_mask.squeeze(1)
-    #     q_attention_mask = q_attention_mask.squeeze(1)
-    #
-    #     logits, attentions = self(img, question_token, q_attention_mask, attn_mask, token_type_ids_q, mode='predict')
-    #     pred = logits.softmax(1).argmax(1).detach()
-    #
-    #     self.val_preds.append(pred)
-    #     self.val_targets.append(target)
-    #     self.val_soft_scores.append(logits.softmax(1).detach())
-    #     self.val_answer_types.append(answer_type)
-    #     return pred
 
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(self.parameters(), lr=self.args.lr)
