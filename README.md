@@ -127,14 +127,15 @@ You can use this as reference, but will need to adapt it for your approach.
 training: python -m train.train_radrestruct --run_name "train_radrestruct" --classifier_dropout 0.2 --acc_grad_batches 2 --lr 1e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision 
 evaluation: python -m evaluation.evaluate_radrestruct --run_name "eval_radrestruct" --match_instances --batch_size 1 --use_pretrained --model_dir "<WEIGHT_PATH>" --progressive --mixed_precision 
 ```
-To use our pretrained weights set WEIGHT_PATH to "TODO"
+
+To use our pretrained model, download the weights from [release v.1.0.0](https://github.com/ChantalMP/Rad-ReStruct/releases/download/weights/radrestruct.zip) and set WEIGHT_PATH pointing to the weight file.
 
 #### VQARad:
 ```
 training: python -m train.train_vqarad --run_name "train_vqarad" --acc_grad_batches 2 --lr 5e-5 --epochs 200 --batch_size 32 --progressive --mixed_precision 
 evaluation: python -m evaluation.evaluate_autoregressive_vqarad --run_name "eval_vqarad" --batch_size 1 --use_pretrained --model_dir "<WEIGHT_PATH>" --progressive --mixed_precision 
 ```
-To use our pretrained weights set WEIGHT_PATH to "TODO"
+To use our pretrained model, download the weights from [release v.1.0.0](https://github.com/ChantalMP/Rad-ReStruct/releases/download/weights/vqarad.zip) and set WEIGHT_PATH pointing to the weight file.
 
 ### Intended Use
 This model is intended to be used solely for (I) future research on visual-language processing and (II) reproducibility of the experimental results reported in the reference paper.
