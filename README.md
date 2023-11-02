@@ -1,8 +1,8 @@
 # Rad-ReStruct: A Novel VQA Benchmark and Method for Structured Radiology Reporting
-**Paper**: [![](https://img.shields.io/badge/Paper-2307.05766-blue)](https://arxiv.org/abs/2307.05766)
+**Paper**: [![](https://img.shields.io/badge/Springer-978_3_031_43904_9-blue)](https://link.springer.com/chapter/10.1007/978-3-031-43904-9_40) [![](https://img.shields.io/badge/Arxiv-2307.05766-blue)](https://arxiv.org/abs/2307.05766)
 
 This is the official repository for the paper "Rad-ReStruct: A Novel VQA Benchmark and Method for Structured Radiology Reporting", 
-which was accepted for publication at MICCAI 2023. This repo includes our code as well as our structured reporting dataset.
+which published at MICCAI 2023. This repo includes our code as well as our structured reporting dataset.
 
 #### Dataset Overview: 
 
