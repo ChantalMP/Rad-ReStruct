@@ -89,8 +89,7 @@ names of the original free-text reports (https://openi.nlm.nih.gov/imgs/collecti
 
 #### Report-based Evaluation:
 
-- For evaluation, we need to ensure consistency of the entire report, therefore we provide an evaluation dataset, where one sample is an image together 
-- with the entire structured report. To load this dataset use the following code:
+- For evaluation, we need to ensure consistency of the entire report, therefore we provide an evaluation dataset, where one sample is an image together with the entire structured report. To load this dataset use the following code:
 
 ```
   from data_utils.data_radrestruct import RadReStructEval
